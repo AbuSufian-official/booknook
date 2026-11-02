@@ -115,7 +115,7 @@ function Footer() {
 
         {/* Copyright Line */}
         <div className="mt-8 pt-6 border-t border-gray-200 text-center text-sm text-gray-500">
-          <p>© {new Date().getFullYear()} BookNook. All rights reserved.</p>
+          <p>© 2026 BookNook. All rights reserved.</p>
         </div>
       </div>
     </footer>
