@@ -27,18 +27,30 @@ export default function AddBookForm() {
   const [isSuccess, setIsSuccess] = useState(false)
 
   // Handle Form Submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
-
-    
     const data= Object.fromEntries(formData.entries())
     
+    const FD=await fetch("http://localhost:8000/books",{
+      method:"POST",
+      headers:{
+        "Content-Type": "application/json",
+      },
+      body:JSON.stringify(data)
+    })
+    const CFD=await FD.json()
+    console.log(CFD)
+
+
+
+
+
+
 
 
 
     setIsSuccess(true)
-
     // Reset after 3 seconds
     setTimeout(() => {
       setIsSuccess(false)
