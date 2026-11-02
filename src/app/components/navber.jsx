@@ -18,7 +18,7 @@ function Navber() {
 
     const navLinks = [
         { name: "Home", href: "/", icon: <HiOutlineHome /> },
-        { name: "All Books", href: "/books", icon: <IoLibraryOutline /> },
+        { name: "All Books", href: "/all-book", icon: <IoLibraryOutline /> },
         { name: "Add Book", href: "/add-book", icon: <IoMdAddCircleOutline /> },
         { name: "My Books", href: "/my-books", icon: <LuBookOpen /> },
         { name: "My Borrows", href: "/my-borrows", icon: <MdOutlineBookmarks /> },
@@ -86,7 +86,7 @@ function Navber() {
                                     <Link
                                         href={link.href}
                                         onClick={() => setIsOpen(false)}
-                                        className=" flex items-center gap-1 block px-3 py-2 text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 rounded-lg font-medium transition"
+                                        className="flex items-center gap-2 px-3 py-2 text-gray-700 hover:bg-[#027cd4]/10 hover:text-[#027cd4] rounded-lg font-medium transition"
                                     >
                                         {link.icon}
                                         {link.name}

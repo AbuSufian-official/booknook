@@ -1,9 +1,9 @@
-import Image from "next/image";
+import BannerSlider from "./components/bannerslider"
 
 export default function Home() {
   return (
-    <main>
-      
-    </main>
-  );
+    <div>
+      <BannerSlider />
+    </div>
+  )
 }
