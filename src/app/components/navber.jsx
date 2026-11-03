@@ -31,6 +31,8 @@ console.log(session?.user)
     const navLinks = [
         { name: "Home", href: "/", icon: <HiOutlineHome /> },
         { name: "All Books", href: "/all-book", icon: <IoLibraryOutline /> },
+    ]
+    const navLinkstwo = [
         { name: "Add Book", href: "/add-book", icon: <IoMdAddCircleOutline /> },
         { name: "My Books", href: "/my-books", icon: <LuBookOpen /> },
         { name: "My Borrows", href: "/my-borrows", icon: <MdOutlineBookmarks /> },
@@ -70,6 +72,20 @@ console.log(session?.user)
                                 </Link>
                             </li>
                         ))}
+                        {Boolean(session) ? (navLinkstwo.map((link) => (
+                            <li key={link.name}>
+                                <Link
+                                    href={link.href}
+                                    className="flex items-center gap-1 text-gray-600 hover:text-[#027cd4] font-medium transition-colors"
+                                >
+                                    {link.icon}
+
+                                    {link.name}
+                                </Link>
+                            </li>
+                        ))):("")}
+
+                        
                     </ul>
 
                     {/* Right Side: Profile & Mobile Menu Button */}

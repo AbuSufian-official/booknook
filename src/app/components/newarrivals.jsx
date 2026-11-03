@@ -77,7 +77,7 @@ export default async function NewArrivals() {
 
                                     {/* View Details */}
                                     <Link
-                                        href={`/books/${book._id}`}
+                                        href={`/all-book/${book._id}`}
                                         className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-[#027cd4] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#0165ad]"
                                     >
                                         View Details
