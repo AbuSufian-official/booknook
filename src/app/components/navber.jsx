@@ -11,9 +11,22 @@ import { IoMdAddCircleOutline } from "react-icons/io";
 import { HiOutlineHome } from "react-icons/hi";
 import { MdOutlineBookmarks } from "react-icons/md";
 import { LuBookOpen } from "react-icons/lu";
-
+import { RiLoginCircleLine } from "react-icons/ri";
+import { LuClipboardPen } from "react-icons/lu";
+import { authClient } from "@/lib/auth-client"
 
 function Navber() {
+
+
+    const {
+        data: session,
+        isPending, //loading state
+        error, //error object
+        refetch //refetch the session
+    } = authClient.useSession()
+
+
+
     const [isOpen, setIsOpen] = useState(false)
 
     const navLinks = [
@@ -62,7 +75,12 @@ function Navber() {
 
                     {/* Right Side: Profile & Mobile Menu Button */}
                     <div className="flex items-center gap-3">
-                        <DropdownMenuAvatar />
+                        {Boolean(session) ? (<DropdownMenuAvatar />) : (<ul className="flex items-center gap-4">
+                            <Link href="/login" className="text-gray-600 flex items-center font-bold"><RiLoginCircleLine /> <li>Login</li></Link>
+                            <Link href="/register" className="text-[#027cd4] flex items-center font-bold"><LuClipboardPen /><li> Register</li></Link>
+                        </ul>)}
+
+
 
                         {/* Mobile Hamburger Button */}
                         <button

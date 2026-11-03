@@ -22,13 +22,26 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
+import { authClient } from "@/lib/auth-client"
+
+
 export function DropdownMenuAvatar() {
+
+
+  const {
+    data: session,
+    isPending, //loading state
+    error, //error object
+    refetch //refetch the session
+  } = authClient.useSession()
+
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger render={<Button variant="ghost" size="icon" className="rounded-full"><Avatar>
-          <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
-          <AvatarFallback>LR</AvatarFallback>
-        </Avatar></Button>} />
+        <AvatarImage src={`${session?.user?.image}`} alt="shadcn" />
+        <AvatarFallback>LR</AvatarFallback>
+      </Avatar></Button>} />
       <DropdownMenuContent align="end">
         <DropdownMenuGroup>
           <DropdownMenuItem>
@@ -45,7 +58,7 @@ export function DropdownMenuAvatar() {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        <DropdownMenuItem className="text-red-600">
           <LogOutIcon />
           Sign Out
         </DropdownMenuItem>
