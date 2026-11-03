@@ -48,7 +48,7 @@ export default function AddBookForm() {
       body:JSON.stringify(data)
     })
     const CFD=await FD.json()
-    console.log(CFD)
+    console.log(data)
 
 
 

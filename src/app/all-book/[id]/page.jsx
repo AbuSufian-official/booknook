@@ -1,4 +1,5 @@
 
+import Borrowbtn from "@/app/components/borrowbtn";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -7,9 +8,13 @@ import Link from "next/link";
 
 export default async function BookDetails({ params }) {
     const { id } = await params;
-    const FD=await fetch(`http://localhost:8000/books/${id}`)
-    const book =await FD.json()
+    const FD = await fetch(`http://localhost:8000/books/${id}`)
+    const book = await FD.json()
     console.log(book)
+
+   
+
+
 
     return (
         <main className="min-h-screen bg-[#f8fbff]">
@@ -63,8 +68,8 @@ export default async function BookDetails({ params }) {
 
                                 <span
                                     className={`rounded-full px-4 py-2 text-xs font-bold ${book.available
-                                            ? "bg-green-50 text-green-600"
-                                            : "bg-red-50 text-red-600"
+                                        ? "bg-green-50 text-green-600"
+                                        : "bg-red-50 text-red-600"
                                         }`}
                                 >
                                     {book.available ? "Available" : "Borrowed"}
@@ -158,14 +163,7 @@ export default async function BookDetails({ params }) {
 
                             {/* Borrow Button */}
                             <div className="mt-8">
-                                <button
-                                    disabled={!book.available}
-                                    className="w-full rounded-xl bg-[#027cd4] px-6 py-4 text-base font-bold text-white shadow-lg shadow-blue-100 transition duration-300 hover:-translate-y-1 hover:bg-[#0165ad] hover:shadow-xl disabled:cursor-not-allowed disabled:bg-gray-400 disabled:shadow-none"
-                                >
-                                    {book.available
-                                        ? "Borrow This Book →"
-                                        : "Currently Borrowed"}
-                                </button>
+                                <Borrowbtn books={book}/>
 
                                 <p className="mt-4 text-center text-xs leading-6 text-gray-400">
                                     Borrow your favorite book and enjoy reading.
