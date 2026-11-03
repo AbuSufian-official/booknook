@@ -4,16 +4,16 @@
 import { Button, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
 import React from 'react'
 import { authClient } from "@/lib/auth-client"
-
+import { FcGoogle } from "react-icons/fc";
 
 
 function Register() {
 
-    const onSubmit = async(e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const userdata = Object.fromEntries(formData.entries());
-        
+
 
         const { data, error } = await authClient.signUp.email({
             name: userdata.name, // required, The name of the user.
@@ -24,6 +24,11 @@ function Register() {
         console.log(data)
 
     };
+    const handelGoogleAuth = async () => {
+        const data = await authClient.signIn.social({
+            provider: "google",
+        });
+    }
     return (
         <Form className="flex w-96 flex-col gap-4" onSubmit={onSubmit}>
             <TextField
@@ -97,12 +102,15 @@ function Register() {
 
             <div className="flex gap-2">
                 <Button type="submit">
-
                     Submit
                 </Button>
                 <Button type="reset" variant="secondary">
                     Reset
                 </Button>
+                <Button onClick={handelGoogleAuth} className="flex items-center gap-1" >
+                    <FcGoogle /><span className="font-bold text-[#027cd4]">Register with Google</span>
+                </Button>
+
             </div>
         </Form>
     )

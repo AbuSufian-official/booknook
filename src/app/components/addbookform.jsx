@@ -14,12 +14,20 @@ import {
   TextField,
 } from "@heroui/react"
 import { BookPlus, Image as ImageIcon, CheckCircle, ExternalLink } from "lucide-react"
+import { authClient } from "@/lib/auth-client"
 
 export default function AddBookForm() {
+  const {
+          data: session,
+          isPending, //loading state
+          error, //error object
+          refetch //refetch the session
+      } = authClient.useSession()
+      
   // Mock logged-in user (read-only)
   const loggedInUser = {
-    name: "Alex Reader",
-    email: "alex.reader@booknook.com",
+    namee: session?.user?.name,
+    emaill: session?.user?.email,
   }
 
   // State for image preview and submit message
@@ -191,7 +199,7 @@ export default function AddBookForm() {
 
               {/* 6. User Name & User Email (Read-Only) */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 border-t border-gray-100">
-                <TextField isReadOnly name="userName" defaultValue={loggedInUser.name}>
+                <TextField isReadOnly name="userName" defaultValue={loggedInUser.namee}>
                   <Label className="text-sm font-medium text-gray-700">User Name</Label>
                   <Input
                     readOnly
@@ -202,7 +210,7 @@ export default function AddBookForm() {
                   </Description>
                 </TextField>
 
-                <TextField isReadOnly name="userEmail" defaultValue={loggedInUser.email}>
+                <TextField isReadOnly name="userEmail" defaultValue={loggedInUser.emaill}>
                   <Label className="text-sm font-medium text-gray-700">User Email</Label>
                   <Input
                     readOnly

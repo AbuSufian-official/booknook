@@ -34,7 +34,9 @@ export function DropdownMenuAvatar() {
     error, //error object
     refetch //refetch the session
   } = authClient.useSession()
-
+  async function handelSingOut(){
+    await authClient.signOut()
+  }
 
   return (
     <DropdownMenu>
@@ -58,7 +60,7 @@ export function DropdownMenuAvatar() {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="text-red-600">
+        <DropdownMenuItem onClick={handelSingOut} className="text-red-600">
           <LogOutIcon />
           Sign Out
         </DropdownMenuItem>

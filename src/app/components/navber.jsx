@@ -24,8 +24,7 @@ function Navber() {
         error, //error object
         refetch //refetch the session
     } = authClient.useSession()
-
-
+console.log(session?.user)
 
     const [isOpen, setIsOpen] = useState(false)
 
@@ -75,7 +74,10 @@ function Navber() {
 
                     {/* Right Side: Profile & Mobile Menu Button */}
                     <div className="flex items-center gap-3">
-                        {Boolean(session) ? (<DropdownMenuAvatar />) : (<ul className="flex items-center gap-4">
+                        {Boolean(session) ? (<div className="flex items-center gap-3">
+                            <p className="text-[#027cd4]">{session?.user?.name}</p>
+                            <DropdownMenuAvatar />
+                        </div>) : (<ul className="flex items-center gap-4">
                             <Link href="/login" className="text-gray-600 flex items-center font-bold"><RiLoginCircleLine /> <li>Login</li></Link>
                             <Link href="/register" className="text-[#027cd4] flex items-center font-bold"><LuClipboardPen /><li> Register</li></Link>
                         </ul>)}
