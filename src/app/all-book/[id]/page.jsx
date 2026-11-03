@@ -3,25 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 
 // Demo book data
-const book = [
-    {
-        id: 1,
-        title: "Atomic Habits",
-        author: "James Clear",
-        category: "Self Development",
-        description:
-            "Atomic Habits is a practical guide to building good habits and breaking bad ones. James Clear explains how tiny changes can lead to remarkable results over time. This book helps readers understand the science of habit formation and create a better daily routine.",
-        image:
-            "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=800",
-        addedBy: "Abu Sufian",
-        addedDate: "October 25, 2026",
-        availableCopies: 5,
-    }
-];
+
 
 export default async function BookDetails({ params }) {
     const { id } = await params;
-
+    const FD=await fetch(`http://localhost:8000/books/${id}`)
+    const book =await FD.json()
+    console.log(book)
 
     return (
         <main className="min-h-screen bg-[#f8fbff]">
