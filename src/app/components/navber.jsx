@@ -24,7 +24,7 @@ function Navber() {
         error, //error object
         refetch //refetch the session
     } = authClient.useSession()
-console.log(session?.user)
+
 
     const [isOpen, setIsOpen] = useState(false)
 

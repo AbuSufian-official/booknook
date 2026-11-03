@@ -23,6 +23,8 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 import { authClient } from "@/lib/auth-client"
+import Link from "next/link"
+import { redirect } from "next/navigation"
 
 
 export function DropdownMenuAvatar() {
@@ -34,8 +36,9 @@ export function DropdownMenuAvatar() {
     error, //error object
     refetch //refetch the session
   } = authClient.useSession()
-  async function handelSingOut(){
+  async function handelSingOut() {
     await authClient.signOut()
+    redirect("/")
   }
 
   return (
@@ -46,18 +49,13 @@ export function DropdownMenuAvatar() {
       </Avatar></Button>} />
       <DropdownMenuContent align="end">
         <DropdownMenuGroup>
-          <DropdownMenuItem>
-            <BadgeCheckIcon />
-            Account
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <CreditCardIcon />
-            Billing
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <BellIcon />
-            Notifications
-          </DropdownMenuItem>
+          <Link href="/account">
+            <DropdownMenuItem>
+              <BadgeCheckIcon />
+              Account
+            </DropdownMenuItem>
+          </Link>
+
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={handelSingOut} className="text-red-600">

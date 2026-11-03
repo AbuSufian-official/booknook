@@ -1,11 +1,17 @@
 import React from 'react'
-import NewArrivals from '../components/newarrivals'
+import Mybookcontainer from '../components/mybookcontainer';
 
-function Mybooks() {
+async function Mybooks() {
+    
+    const FD = await fetch("http://localhost:8000/books");
+    const books = await FD.json()
+    
+
+
     return (
         <div>
-            my books
-            <NewArrivals/>
+            <Mybookcontainer data={books} />
+
         </div>
     )
 }

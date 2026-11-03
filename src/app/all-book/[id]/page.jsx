@@ -124,6 +124,15 @@ export default async function BookDetails({ params }) {
                                         {book.category}
                                     </p>
                                 </div>
+
+                                <div className="rounded-2xl bg-blue-50 p-5">
+                                    <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+                                        Total Copies
+                                    </p>
+                                    <p className="mt-2 font-bold text-gray-900">
+                                        {book.copies}
+                                    </p>
+                                </div>
                             </div>
 
                             {/* Added By Information */}

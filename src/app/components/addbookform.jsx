@@ -116,6 +116,15 @@ export default function AddBookForm() {
                   />
                   <FieldError />
                 </TextField>
+                <TextField isRequired name="copies">
+                  <Label className="text-sm font-medium text-gray-900">Copies</Label>
+                  <Input
+                    type="number"
+                    placeholder="give number"
+                    className="mt-1"
+                  />
+                  <FieldError />
+                </TextField>
               </div>
 
               {/* 3. Category Select Box */}

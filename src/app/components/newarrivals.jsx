@@ -95,7 +95,7 @@ export default async function NewArrivals() {
                 {/* See All Books Button */}
                 <div className="mt-12 text-center">
                     <Link
-                        href="/books"
+                        href="/all-book"
                         className="inline-flex items-center justify-center gap-3 rounded-xl border-2 border-[#027cd4] px-8 py-3.5 text-sm font-bold text-[#027cd4] transition duration-300 hover:bg-[#027cd4] hover:text-white"
                     >
                         See All Books
