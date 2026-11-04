@@ -18,7 +18,12 @@ function Borrowbtn({ books }) {
     } = authClient.useSession()
 
     const router = useRouter();
+
+
+
+
     async function handelBorrowBook(boo) {
+
         const FD = await fetch(`http://localhost:8000/books/${boo._id}`, {
             method: "PATCH",
             headers: {
@@ -37,7 +42,7 @@ function Borrowbtn({ books }) {
 
 
         const obj = {
-            _id: boo._id,
+
             title: boo.title,
             image: boo.image,
             email: session?.user?.email,
@@ -59,20 +64,29 @@ function Borrowbtn({ books }) {
 
     }
 
-    const handelDisable = async () => {
+    const handelDisable = async (deta) => {
         const FfD = await fetch(`http://localhost:8000/borrows/`)
         const CFfD = await FfD.json();
         let a = CFfD.find((n) => {
-            return n.email == session?.user?.email
+            return ((n.email == session?.user?.email) && (n.title == deta.title))
         })
         let btnstate = Boolean(a)
-
-        setbtnvalue(btnstate)
+       
+            setbtnvalue(btnstate)
+       
+        if(btnstate==false && deta.copies==0){
+            setbtnvalue(true)
+        }else if(btnstate==true && deta.copies>0){
+            setbtnvalue(true)
+        }else if(btnstate==false && deta.copies>0){
+            setbtnvalue(false)
+        }
+        
 
 
     }
 
-    handelDisable()
+    handelDisable(books)
 
 
 
