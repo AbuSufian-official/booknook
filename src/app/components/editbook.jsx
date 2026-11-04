@@ -14,12 +14,13 @@ export function WithForm({ bookdata }) {
     const formData = new FormData(e.currentTarget);
     const userdata = Object.fromEntries(formData.entries());
     console.log(userdata)
+    const obj={...userdata,copies:Number(userdata.copies)}
     const FD = await fetch(`http://localhost:8000/books/${bookdata._id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(userdata),
+      body: JSON.stringify(obj),
     })
     redirect("/my-books")
 

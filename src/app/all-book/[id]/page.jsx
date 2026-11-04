@@ -10,9 +10,13 @@ export default async function BookDetails({ params }) {
     const { id } = await params;
     const FD = await fetch(`http://localhost:8000/books/${id}`)
     const book = await FD.json()
-    console.log(book)
 
-   
+
+
+
+
+
+
 
 
 
@@ -163,7 +167,7 @@ export default async function BookDetails({ params }) {
 
                             {/* Borrow Button */}
                             <div className="mt-8">
-                                <Borrowbtn books={book}/>
+                                <Borrowbtn  books={book} />
 
                                 <p className="mt-4 text-center text-xs leading-6 text-gray-400">
                                     Borrow your favorite book and enjoy reading.
