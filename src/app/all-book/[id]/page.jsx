@@ -17,7 +17,7 @@ export default async function BookDetails({ params }) {
 
 
     const { id } = await params;
-    const FD = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/books/${id}`, {
+    const FD = await fetch(`https://booknook-server-amber.vercel.app/books/${id}`, {
         headers: {
             authorization: usertoken?.token
         }

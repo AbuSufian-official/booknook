@@ -26,7 +26,7 @@ function Myborrowcontainer({ CDF }) {
         const { data: tokedata, error } = await authClient.token()
 
 
-        const FD = await fetch(`http://localhost:8000/borrows/${pera._id}`, {
+        const FD = await fetch(`https://booknook-server-amber.vercel.app/borrows/${pera._id}`, {
             method: "DELETE",
             headers: {
                 authorization: tokedata?.token
@@ -35,7 +35,7 @@ function Myborrowcontainer({ CDF }) {
 
 
 
-        const DFD = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/books/${pera._id}`, {
+        const DFD = await fetch(`https://booknook-server-amber.vercel.app/books/${pera._id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",

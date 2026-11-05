@@ -32,7 +32,7 @@ export function WithForm({ books }) {
         const { data:tokedata, error } = await authClient.token()
 
 
-        const FD = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/books/${boo._id}`, {
+        const FD = await fetch(`https://booknook-server-amber.vercel.app/books/${boo._id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -58,7 +58,7 @@ export function WithForm({ books }) {
             borrowDate: getFutureDate(0),
             returnDate: getFutureDate(3)
         }
-        const PFD = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/borrows`, {
+        const PFD = await fetch(`https://booknook-server-amber.vercel.app/borrows`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -75,7 +75,7 @@ export function WithForm({ books }) {
 
     const handelDisable = async (bid) => {
         const { data:tokedata, error } = await authClient.token()
-        const FfD = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/borrows/`,{
+        const FfD = await fetch(`https://booknook-server-amber.vercel.app/borrows/`,{
             headers:{
                 authorization: tokedata?.token
             }

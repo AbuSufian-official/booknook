@@ -2,7 +2,7 @@ import Link from "next/link";
 
 
 export default async function NewArrivals() {
-   const FD=await fetch(`${process.env.NEXT_PUBLIC_API_URL}/books`);
+   const FD=await fetch(`https://booknook-server-amber.vercel.app/books`);
     const bbooks=await FD.json()
     
     let bookss=[...bbooks]

@@ -47,7 +47,7 @@ export default function AddBookForm() {
     
 
 
-    const FD = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/books`, {
+    const FD = await fetch(`https://booknook-server-amber.vercel.app/books`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

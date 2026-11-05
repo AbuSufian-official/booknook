@@ -6,7 +6,7 @@ export const metadata = {
 }
 async function Mybooks() {
     
-    const FD = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/books`);
+    const FD = await fetch(`https://booknook-server-amber.vercel.app/books`);
     const books = await FD.json()
     
 

@@ -5,7 +5,7 @@ export const metadata = {
   description: "Add a book, borrow a book, return a book.",
 };
 async function Allbooks() {
-    const FD=await fetch(`${process.env.NEXT_PUBLIC_API_URL}/books`);
+    const FD=await fetch(`https://booknook-server-amber.vercel.app/books`);
     const books=await FD.json()
     console.log(books)
     return (<>

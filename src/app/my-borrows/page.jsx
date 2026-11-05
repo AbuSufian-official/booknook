@@ -12,7 +12,7 @@ async function Myborrows() {
         headers: await headers()
     })
 
-const FD = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/borrows`,{
+const FD = await fetch(`https://booknook-server-amber.vercel.app/borrows`,{
     headers:{
         authorization: usertoken?.token
     }
