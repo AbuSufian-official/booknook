@@ -107,12 +107,7 @@ export default async function BookDetails({ params }) {
                                 {book.title}
                             </h2>
 
-                            <p className="mt-3 text-base text-gray-500">
-                                Written by{" "}
-                                <span className="font-semibold text-gray-900">
-                                    {book.author}
-                                </span>
-                            </p>
+                           
 
                             <div className="my-7 h-px bg-gray-100" />
 
@@ -160,20 +155,15 @@ export default async function BookDetails({ params }) {
                             {/* Added By Information */}
                             <div className="rounded-2xl border border-gray-100 p-5">
                                 <div className="flex items-center gap-4">
-                                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#027cd4] text-lg font-bold text-white">
-                                        {book.addedBy}
-                                    </div>
-
+                                    
                                     <div>
-                                        <p className="text-xs text-gray-500">
+                                        <p className="text-xs text-gray-700">
                                             Added to BookNook by
                                         </p>
                                         <h4 className="mt-1 font-bold text-gray-900">
-                                            {book.addedBy}
+                                            {book.userName}
                                         </h4>
-                                        <p className="mt-1 text-xs text-gray-400">
-                                            Added on {book.addedDate}
-                                        </p>
+                                        
                                     </div>
                                 </div>
                             </div>

@@ -6,11 +6,14 @@ export default async function NewArrivals() {
     const bbooks=await FD.json()
     
     let bookss=[...bbooks]
-    let books=[]
+    let bookks=[]
     for(let i of bookss){
-        books.unshift(i)
+        bookks.unshift(i)
     }
-    
+    let books=[]
+    for(let x=0;x<=5;x++){
+        books.push(bookks[x])
+    }
    
 
     return (
@@ -41,7 +44,7 @@ export default async function NewArrivals() {
 
                 {/* Books Grid */}
                
-                    <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                    <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
 
                         {books.map((book) => (
                             <div

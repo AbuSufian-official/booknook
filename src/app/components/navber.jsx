@@ -129,7 +129,24 @@ function Navber() {
                                     </Link>
                                 </li>
                             ))}
+                            {Boolean(session) ? (navLinkstwo.map((link) => (
+                            <li key={link.name}>
+                                <Link
+                                    href={link.href}
+                                    className="flex items-center gap-2 px-3 py-2 text-gray-700 hover:bg-[#027cd4]/10 hover:text-[#027cd4] rounded-lg font-medium transition"
+                                >
+                                    {link.icon}
+
+                                    {link.name}
+                                </Link>
+                            </li>
+                        ))):("")}
                         </ul>
+
+
+
+
+
                     </div>
                 )}
             </nav>

@@ -48,7 +48,7 @@ function Mybookcontainer({ data }) {
 
 
     return (
-        <div className="min-h-screen bg-white">
+        <div className=" bg-white">
 
             {/* Header */}
             <section className="bg-[#027cd4] px-4 py-10 text-center sm:py-12">
@@ -62,7 +62,7 @@ function Mybookcontainer({ data }) {
             </section>
 
             {/* Main Content */}
-            <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
+            <section className="container mx-auto px-2 py-10 sm:px-6 lg:px-8">
 
                 {/* Book Count */}
                 <div className="mb-5 flex items-center justify-between">
