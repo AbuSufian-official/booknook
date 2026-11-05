@@ -28,13 +28,21 @@ export function WithForm({ books }) {
 
     const router = useRouter();
     async function handelBorrowBook(boo) {
+
+        const { data:tokedata, error } = await authClient.token()
+
+
         const FD = await fetch(`http://localhost:8000/books/${boo._id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
+                authorization: tokedata?.token
             },
             body: JSON.stringify({ ...boo, borrow: "Doborrow" }),
         })
+
+
+
 
         const getFutureDate = (days) => {
             const date = new Date();
@@ -43,8 +51,6 @@ export function WithForm({ books }) {
 
             return date.toISOString().split("T")[0];
         };
-
-
         const obj = {
             title: boo.title,
             image: boo.image,
@@ -52,11 +58,11 @@ export function WithForm({ books }) {
             borrowDate: getFutureDate(0),
             returnDate: getFutureDate(3)
         }
-
         const PFD = await fetch(`http://localhost:8000/borrows`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                 authorization: tokedata?.token
             },
             body: JSON.stringify(obj),
         })
@@ -68,7 +74,12 @@ export function WithForm({ books }) {
     }
 
     const handelDisable = async (bid) => {
-        const FfD = await fetch(`http://localhost:8000/borrows/`)
+        const { data:tokedata, error } = await authClient.token()
+        const FfD = await fetch(`http://localhost:8000/borrows/`,{
+            headers:{
+                authorization: tokedata?.token
+            }
+        })
         const CFfD = await FfD.json();
         let a = CFfD.find((n) => {
             return ((n.email == session?.user?.email) && (n.title == bid.title))

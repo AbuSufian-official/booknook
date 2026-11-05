@@ -1,5 +1,7 @@
 
 import Borrowbtn from "@/app/components/borrowbtn";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -7,10 +9,17 @@ import Link from "next/link";
 
 
 export default async function BookDetails({ params }) {
+
+    const usertoken = await auth.api.getToken({
+        headers: await headers()
+    })
+    
+
+
     const { id } = await params;
-    const FD = await fetch(`http://localhost:8000/books/${id}`,{
-        headers:{
-            authorization:"userLogin"
+    const FD = await fetch(`http://localhost:8000/books/${id}`, {
+        headers: {
+            authorization: usertoken?.token
         }
     })
     const book = await FD.json()
@@ -171,7 +180,7 @@ export default async function BookDetails({ params }) {
 
                             {/* Borrow Button */}
                             <div className="mt-8">
-                                <Borrowbtn  books={book} />
+                                <Borrowbtn books={book} />
 
                                 <p className="mt-4 text-center text-xs leading-6 text-gray-400">
                                     Borrow your favorite book and enjoy reading.

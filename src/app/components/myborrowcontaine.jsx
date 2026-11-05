@@ -23,8 +23,14 @@ function Myborrowcontainer({ CDF }) {
 
 
     const handeldelbtnborrow = async (pera) => {
+        const { data: tokedata, error } = await authClient.token()
+
+
         const FD = await fetch(`http://localhost:8000/borrows/${pera._id}`, {
-            method: "DELETE"
+            method: "DELETE",
+            headers: {
+                authorization: tokedata?.token
+            },
         })
 
 
@@ -33,6 +39,7 @@ function Myborrowcontainer({ CDF }) {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
+                authorization: tokedata?.token
             },
             body: JSON.stringify({ ...pera, borrow: "DELborrow" }),
         })

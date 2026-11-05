@@ -16,14 +16,17 @@ import {
 import { BookPlus, Image as ImageIcon, CheckCircle, ExternalLink } from "lucide-react"
 import { authClient } from "@/lib/auth-client"
 
+
+
+
 export default function AddBookForm() {
   const {
-          data: session,
-          isPending, //loading state
-          error, //error object
-          refetch //refetch the session
-      } = authClient.useSession()
-      
+    data: session,
+    isPending, //loading state
+    error, //error object
+    refetch //refetch the session
+  } = authClient.useSession()
+
   // Mock logged-in user (read-only)
   const loggedInUser = {
     namee: session?.user?.name,
@@ -35,20 +38,25 @@ export default function AddBookForm() {
   const [isSuccess, setIsSuccess] = useState(false)
 
   // Handle Form Submission
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
-    const data= Object.fromEntries(formData.entries())
+    const bookdata = Object.fromEntries(formData.entries())
+
+    const { data:tokedata, error } = await authClient.token()
     
-    const FD=await fetch("http://localhost:8000/books",{
-      method:"POST",
-      headers:{
+
+
+    const FD = await fetch("http://localhost:8000/books", {
+      method: "POST",
+      headers: {
         "Content-Type": "application/json",
+        authorization: tokedata?.token
       },
-      body:JSON.stringify(data)
+      body: JSON.stringify(bookdata)
     })
-    const CFD=await FD.json()
-    console.log(data)
+    const CFD = await FD.json()
+    
 
 
 
@@ -70,7 +78,7 @@ export default function AddBookForm() {
   return (
     <div className="w-full max-w-2xl mx-auto my-8 px-4">
       <Surface className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 sm:p-8">
-        
+
         {/* Success Alert Banner */}
         {isSuccess && (
           <div className="mb-6 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 flex items-center gap-3 transition">
@@ -84,7 +92,7 @@ export default function AddBookForm() {
 
         <Form onSubmit={handleSubmit} className="space-y-6">
           <Fieldset className="w-full space-y-6">
-            
+
             {/* Form Title & Subtitle */}
             <div className="border-b border-gray-100 pb-4">
               <Fieldset.Legend className="text-2xl font-bold text-gray-900 tracking-tight">
@@ -96,7 +104,7 @@ export default function AddBookForm() {
             </div>
 
             <Fieldset.Group className="space-y-5">
-              
+
               {/* 1. Book Title & 2. Author Name */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <TextField isRequired name="title">
@@ -155,7 +163,7 @@ export default function AddBookForm() {
               <TextField isRequired name="image">
                 <Label className="text-sm font-medium text-gray-900 flex items-center justify-between">
                   <span>Book Image URL</span>
-                  
+
                 </Label>
                 <Input
                   type="url"

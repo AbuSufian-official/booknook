@@ -27,9 +27,13 @@ function Mybookcontainer({ data }) {
 
     // Delete a book
     const handleDelete = async (id) => {
-
+        const { data: tokedata, error } = await authClient.token()
         const FD = await fetch(`http://localhost:8000/books/${id}`, {
             method: "DELETE",
+            headers: {
+
+                authorization: tokedata?.token
+            },
         })
         redirect("/my-books")
 

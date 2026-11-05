@@ -3,6 +3,7 @@
 
 import { Button, Input, Label, Modal, Surface, TextField } from "@heroui/react";
 import { redirect } from "next/navigation";
+import { authClient } from "@/lib/auth-client"
 
 export function WithForm({ bookdata }) {
 
@@ -15,10 +16,12 @@ export function WithForm({ bookdata }) {
     const userdata = Object.fromEntries(formData.entries());
     console.log(userdata)
     const obj={...userdata,copies:Number(userdata.copies)}
+    const { data:tokedata, error } = await authClient.token()
     const FD = await fetch(`http://localhost:8000/books/${bookdata._id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
+        authorization: tokedata?.token
       },
       body: JSON.stringify(obj),
     })
