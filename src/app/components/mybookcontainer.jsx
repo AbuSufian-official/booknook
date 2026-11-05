@@ -28,7 +28,7 @@ function Mybookcontainer({ data }) {
     // Delete a book
     const handleDelete = async (id) => {
         const { data: tokedata, error } = await authClient.token()
-        const FD = await fetch(`http://localhost:8000/books/${id}`, {
+        const FD = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/books/${id}`, {
             method: "DELETE",
             headers: {
 

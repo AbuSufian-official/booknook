@@ -47,7 +47,7 @@ export default function AddBookForm() {
     
 
 
-    const FD = await fetch("http://localhost:8000/books", {
+    const FD = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/books`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -56,7 +56,7 @@ export default function AddBookForm() {
       body: JSON.stringify(bookdata)
     })
     const CFD = await FD.json()
-    
+    console.log(CFD)
 
 
 

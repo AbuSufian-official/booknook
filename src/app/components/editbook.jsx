@@ -17,7 +17,7 @@ export function WithForm({ bookdata }) {
     console.log(userdata)
     const obj={...userdata,copies:Number(userdata.copies)}
     const { data:tokedata, error } = await authClient.token()
-    const FD = await fetch(`http://localhost:8000/books/${bookdata._id}`, {
+    const FD = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/books/${bookdata._id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 
 export default async function NewArrivals() {
-   const FD=await fetch("http://localhost:8000/books");
+   const FD=await fetch(`${process.env.NEXT_PUBLIC_API_URL}/books`);
     const bbooks=await FD.json()
     
     let bookss=[...bbooks]

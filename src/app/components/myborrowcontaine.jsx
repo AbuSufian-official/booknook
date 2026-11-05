@@ -35,7 +35,7 @@ function Myborrowcontainer({ CDF }) {
 
 
 
-        const DFD = await fetch(`http://localhost:8000/books/${pera._id}`, {
+        const DFD = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/books/${pera._id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",

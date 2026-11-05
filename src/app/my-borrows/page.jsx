@@ -12,7 +12,7 @@ async function Myborrows() {
         headers: await headers()
     })
 
-const FD = await fetch(`http://localhost:8000/borrows`,{
+const FD = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/borrows`,{
     headers:{
         authorization: usertoken?.token
     }

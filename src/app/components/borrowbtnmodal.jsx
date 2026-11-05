@@ -32,7 +32,7 @@ export function WithForm({ books }) {
         const { data:tokedata, error } = await authClient.token()
 
 
-        const FD = await fetch(`http://localhost:8000/books/${boo._id}`, {
+        const FD = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/books/${boo._id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -58,7 +58,7 @@ export function WithForm({ books }) {
             borrowDate: getFutureDate(0),
             returnDate: getFutureDate(3)
         }
-        const PFD = await fetch(`http://localhost:8000/borrows`, {
+        const PFD = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/borrows`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -75,7 +75,7 @@ export function WithForm({ books }) {
 
     const handelDisable = async (bid) => {
         const { data:tokedata, error } = await authClient.token()
-        const FfD = await fetch(`http://localhost:8000/borrows/`,{
+        const FfD = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/borrows/`,{
             headers:{
                 authorization: tokedata?.token
             }

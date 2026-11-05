@@ -17,7 +17,7 @@ export default async function BookDetails({ params }) {
 
 
     const { id } = await params;
-    const FD = await fetch(`http://localhost:8000/books/${id}`, {
+    const FD = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/books/${id}`, {
         headers: {
             authorization: usertoken?.token
         }
