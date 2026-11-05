@@ -83,7 +83,7 @@ function Borrowbtn({ books }) {
     return (
         // <button
         //     onClick={() => handelBorrowBook(books)}
-        //     disabled={btnvalue}
+       
 
 
         //     className="w-full rounded-xl bg-[#027cd4] px-6 py-4 text-base font-bold text-white shadow-lg shadow-blue-100 transition duration-300 hover:-translate-y-1 hover:bg-[#0165ad] hover:shadow-xl disabled:cursor-not-allowed disabled:bg-gray-400 disabled:shadow-none"
