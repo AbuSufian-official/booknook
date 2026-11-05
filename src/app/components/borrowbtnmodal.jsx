@@ -23,7 +23,7 @@ export function WithForm({ books }) {
         data: session,
         isPending, //loading state
         error, //error object
-        refetch //refetch the session
+        refetch 
     } = authClient.useSession()
 
     const router = useRouter();
