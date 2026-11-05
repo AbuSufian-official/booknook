@@ -8,7 +8,11 @@ import Link from "next/link";
 
 export default async function BookDetails({ params }) {
     const { id } = await params;
-    const FD = await fetch(`http://localhost:8000/books/${id}`)
+    const FD = await fetch(`http://localhost:8000/books/${id}`,{
+        headers:{
+            authorization:"userLogin"
+        }
+    })
     const book = await FD.json()
 
 
