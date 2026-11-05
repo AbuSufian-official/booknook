@@ -3,7 +3,10 @@ import React from 'react'
 import Myborrowcontainer from '../components/myborrowcontaine';
 import { headers } from "next/headers";
 import { auth } from "@/lib/auth";
-
+export const metadata = {
+  title: "BookNook | MY BORROWS ",
+  description: "Share a book with fellow readers on BookNook.",
+}
 async function Myborrows() {
  const usertoken = await auth.api.getToken({
         headers: await headers()

@@ -2,7 +2,7 @@ import React from "react"
 import AddBookForm from "../components/addbookform"
 
 export const metadata = {
-  title: "Add a New Book | BookNook",
+  title: "BookNook | Add a New Book ",
   description: "Share a book with fellow readers on BookNook.",
 }
 

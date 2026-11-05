@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import React from 'react'
-
+export const metadata = {
+  title: "BookNook | All Books",
+  description: "Add a book, borrow a book, return a book.",
+};
 async function Allbooks() {
     const FD=await fetch("http://localhost:8000/books");
     const books=await FD.json()
